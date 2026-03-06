@@ -17,13 +17,13 @@ function initNavbar() {
     let lastScroll = 0;
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-        
+
         lastScroll = currentScroll;
     });
 
@@ -32,7 +32,7 @@ function initNavbar() {
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             navToggle.classList.toggle('active');
-            
+
             // Animate hamburger to X
             const spans = navToggle.querySelectorAll('span');
             if (navLinks.classList.contains('active')) {
@@ -66,7 +66,7 @@ function initNavbar() {
 // ===== SCROLL ANIMATIONS (AOS-like) =====
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('[data-aos]');
-    
+
     if (!animatedElements.length) return;
 
     const observer = new IntersectionObserver((entries) => {
@@ -90,7 +90,7 @@ function initScrollAnimations() {
 // ===== COUNT UP ANIMATION =====
 function initCountUp() {
     const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-    
+
     if (!statNumbers.length) return;
 
     const observer = new IntersectionObserver((entries) => {
@@ -110,7 +110,7 @@ function animateCountUp(element, target) {
     let current = 0;
     const duration = 2000;
     const increment = target / (duration / 16);
-    
+
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
@@ -130,7 +130,7 @@ function initSmoothScroll() {
             if (target) {
                 const navHeight = document.getElementById('navbar').offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -143,15 +143,15 @@ function initSmoothScroll() {
 // ===== CONTACT FORM HANDLER =====
 function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const form = document.getElementById('contactForm');
     const successDiv = document.getElementById('formSuccess');
     const submitBtn = document.getElementById('submitBtn');
-    
+
     // Button loading state
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
     submitBtn.disabled = true;
-    
+
     // Simulate form submission
     setTimeout(() => {
         form.style.display = 'none';
@@ -179,7 +179,7 @@ document.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
             card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(45,91,255,0.06), rgba(255,255,255,0.03) 40%, transparent 60%)`;
         }
